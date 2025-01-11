@@ -57,7 +57,7 @@ function libary:Window(properties)
         dialog = dialog .. "set_border_color|" .. borderColor .. "\n"
     end
 
-    dialog = dialog .. "add_label_with_Icon|Big|" .. label .. "|left|" .. icon .. "|\n"
+    dialog = dialog .. "add_label_with_Icon|big|" .. label .. "|left|" .. icon .. "|\nadd_spacer|small|\n"
 
     return dialog
 end
