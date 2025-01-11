@@ -1,12 +1,15 @@
 local lucUI = load(makeRequest("https://raw.githubusercontent.com/notLucidi/LucUI/refs/heads/main/LucUI.lua", "GET", "").content)()
 
-local Window = lucUI:Window({
-    Label = "Label Example",
-    BackgroundColor = color("backgroundDark"),
-    BorderColor = color("grayDark"),
-    Icon = 1234,
+local dialog1 = libary:Window({
+    Label = "Formulir Pengguna",
+    BackgroundColor = "backgroundDark",
+    BorderColor = "grayDark",
+    Icon = 7188,
     ExitButton = true
 })
-logToConsole(Window)
-logToConsole("Update Beta v0.3")
-sendVariant({[0] = "OnDialogRequest", [1] = Window})
+
+dialog1:addTextBox("LucUI")
+
+local dialogString1 = dialog1:build()
+sendVariant({[0] = "OnDialogRequest", [1] = dialogString1})
+
