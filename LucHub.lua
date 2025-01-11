@@ -8,4 +8,5 @@ local Window = lucUI:Window({
     ExitButton = true
 })
 logToConsole(Window)
+logToConsole("Update Beta v0.3")
 sendVariant({[0] = "OnDialogRequest", [1] = Window})
