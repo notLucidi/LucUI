@@ -1,6 +1,6 @@
-local lucUI = load(makeRequest("https://raw.githubusercontent.com/notLucidi/LucUI/refs/heads/main/LucUI.lua", "GET", "").content)()
+local LucUI = load(makeRequest("https://raw.githubusercontent.com/notLucidi/LucUI/refs/heads/main/LucUI.lua", "GET", "").content)()
 
-local dialog1 = libary:Window({
+local dialog1 = LucUI:Window({
     Label = "Formulir Pengguna",
     BackgroundColor = "backgroundDark",
     BorderColor = "grayDark",
