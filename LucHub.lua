@@ -7,5 +7,5 @@ local Window = lucUI:Window({
     Icon = 1234,
     ExitButton = true
 })
-
+logToConsole(Window)
 sendVariant({[0] = "OnDialogRequest", [1] = Window})
