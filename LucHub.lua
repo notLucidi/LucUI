@@ -8,7 +8,7 @@ local dialog1 = LucUI:Window({
     ExitButton = true
 })
 
-dialog1:addTextBox("LucUI")
+dialog1:addTextbox("LucUI")
 
 local dialogString1 = dialog1:build()
 sendVariant({[0] = "OnDialogRequest", [1] = dialogString1})
