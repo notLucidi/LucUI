@@ -1,41 +1,34 @@
-local LucUI = load(makeRequest("https://raw.githubusercontent.com/notLucidi/LucUI/refs/heads/main/LucUI.lua", "GET", "").content)()
+-- Load the library
+local LucUI = dofile("storage/emulated/0/Android/data/laancher.powerkuy.growlauncher/ScriptLua/LucUIP.lua")
 
--- Create a window
-local Window = LucUI:Window({
-    Label = "Example Window",
-    BackgroundColor = "backgroundDarkSolid",
-	BorderColor = "dangerSolid",
+-- Create a new window
+local TestUI = LucUI:Window({
+    Name = "TestWindow",
+    Text = "Test Window",
     Icon = 7188,
-    ExitButton = false
+    Exit = true,
+    BackgroundColor = "backgroundDarkSolid",
+    BorderColor = "borderDarkSolid"
 })
 
--- Add a tab to the window
-local Tab = Window:MakeTab({
-    Id = "example_tab",
-    Icon = "interface/large/gacha_banner.rttex",
-    Size = "228,92",
+-- Add a text element
+local text1 = TestUI:Text({
+    Size = "Small",
+    Text = "`9LucUI"
+})
+
+-- Add a button element
+local button1 = TestUI:Button({
+    Name = "MyButton",
+    Text = "Click Me",
+    UseIcon = true,
     Frame = "0,0",
-    Width = 0.14,
-    MinWidth = 60,
-    Callback  = function()
-		logToConsole("Callback Called!")
-	end
+    Icon = 7188,
+    Amount = 10,
+    Scaling = "scale",
+    EndList = false
 })
 
-local Tab2 = Window:MakeTab({
-    Id = "example_tab1",
-    Icon = "interface/large/gacha_banner.rttex",
-    Size = "228,92",
-    Frame = "0,1",
-    Width = 0.14,
-    MinWidth = 60
-})
-
-local image = Window:addImage({
-	Id = "example_image",
-    Image = "interface/large/galaxy_banner.rttex"
-})
-
-local dialogString = Window:build()
-
-sendVariant({[0] = "OnDialogRequest", [1] = dialogString})
+-- Build and print the UI
+local ui = TestUI:Build()
+print(ui)
