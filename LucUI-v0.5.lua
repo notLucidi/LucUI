@@ -128,6 +128,8 @@ function library:Window(str)
             button:addElement("add_button|".. button.name .."|".. button.text .."|")
         end
 
+        dialog:addElement(button.elements)
+
         if str.EndList then
             dialog:addElement("add_button_with_icon||END_LIST||0||")
         end
@@ -149,6 +151,8 @@ function library:Window(str)
             text:addElement("add_textbox|".. text.text .."|")
         end
 
+        dialog:addElement(text.elements)
+
         return text
     end
 
@@ -163,6 +167,8 @@ function library:Window(str)
             spacer:addElement("add_spacer|".. spacer.size:lower() .."|")
         end
 
+        dialog:addElement(spacer.elements)
+
         return spacer
     end
 
@@ -175,6 +181,8 @@ function library:Window(str)
         setmetatable(icon, { __index = library })
 
         icon:addElement("add_label_with_icon|small|".. icon.text .."|left|".. icon.icon .."|")
+
+        dialog:addElement(icon.elements)
 
         return icon
     end
