@@ -1,13 +1,39 @@
 local Library = {}
 Library.__index = Library
 
+local Colors = {
+    background = {25, 25, 25, 255},
+    primary = {52, 152, 219, 255},
+    danger = {231, 76, 60, 255},
+    success = {39, 174, 96, 255}, 
+    backgroundDarkSolid = {25, 25, 25, 255},
+    backgroundLightSolid = {240, 240, 240, 255},
+    textDarkSolid = {10, 10, 10, 255},
+    textLightSolid = {255, 255, 255, 255},
+    borderDarkSolid = {50, 50, 50, 255},
+    borderLightSolid = {200, 200, 200, 255},
+    primarySolid = {52, 152, 219, 255},
+    primaryHoverSolid = {41, 128, 185, 255},
+    accentSolid = {46, 204, 113, 255},
+    dangerSolid = {231, 76, 60, 255},
+    secondarySolid = {155, 89, 182, 255},
+    warningSolid = {241, 196, 15, 255},
+    infoSolid = {52, 73, 94, 255},
+    successSolid = {39, 174, 96, 255},
+    grayLightSolid = {220, 220, 220, 255},
+    graySolid = {128, 128, 128, 255},
+    grayDarkSolid = {64, 64, 64, 255},
+    highlightSolid = {243, 156, 18, 255},
+    selectionSolid = {142, 68, 173, 255},
+    disabledSolid = {189, 195, 199, 255}
+}
+
 function Library:New(config)
     local instance = setmetatable({}, Library)
     instance.elements = {}
     instance.tabs = {}
     instance.scalingAdded = false
     
-    -- Mendukung Name atau name, Title atau title, dst.
     instance.name = config.Name or config.name or "ui_window"
     instance.title = config.Title or config.title or "Main Menu"
     instance.icon = config.Icon or config.icon or 7188
@@ -79,7 +105,6 @@ function Library:Spacer(size)
 end
 
 function Library:Tab(data)
-    -- Mendukung Name/name, Image/image, Width/width
     local name = data.Name or data.name or "Tab"
     local image = data.Image or data.image or ""
     local width = data.Width or data.width or 60
@@ -138,4 +163,3 @@ function Library:Build(cancelText, confirmText, quickExit)
 end
 
 return Library
-
