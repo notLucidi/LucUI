@@ -61,24 +61,77 @@ Menyusun seluruh elemen menjadi paket data final dan mengirimkannya melalui `Sen
 Berikut adalah contoh pembuatan dialog pengaturan dunia menggunakan Method Chaining:
 
 ```lua
-local UI = require("UILibrary")
+function import(path);local f = io.open("storage/emulated/0/Android/media/launcher.powerkuy.growlauncher/scriptLua/"..path..".lua","r");local code = f:read("*a");f:close();return load(code)();end
 
-UI:New({
-    Name = "world_settings",
-    Title = "World Configuration",
+local UI = import("LucUI") -- require sama dofile ga bisa
+
+--- @param config table {Name: string, Title: string, Icon: number, DefaultColor: string, BorderColor: string|table, BG: string|table, UseEleIcon: boolean, EleID: number}
+local myMenu = UI:New({
+    Name = "shop_menu",
+    Title = "`wDiamond Shop",
     Icon = 242,
-    BorderColor = "primary"
+    DefaultColor = "`o",
+    BG = {255,255,255,255}, -- Warna custom RGBA
+    BorderColor = "success"   -- Menggunakan preset
 })
-:Spacer("small")
-:Text("Silakan atur konfigurasi akses dunia di bawah ini:")
-:Checkbox("public_access", "Izinkan akses publik", 0)
-:Input("min_level", "Level Minimal: ", 1, 3)
-:Spacer("small")
-:Button({
-    Name = "save_settings",
-    Text = "Simpan Perubahan",
-    UseIcon = true,
-    Icon = 32,
-    EndList = true
-})
-:Build("Batal", "Simpan", true)
+
+--- @param size string "small" or "big"
+--- function Library:Spacer(size)
+      :Spacer("small")
+      
+--- @param text string The text to display
+--- @param size string "big" or "small"
+--- @param icon number Item ID
+--- @param eleId number Element ID/Extra ID
+      :LabelEle("`#Limited Edition Item", "big",1430, 0)
+      
+--- @param text string The text content
+--- @param size string "small" or "big"
+--- @param color string Format "r,g,b,a" (e.g., "255,255,0,255")
+--- function Library:CustomText(text, size, color)
+      :CustomText("Promo berakhir dalam 2 jam!", "small", "255,0,0,255")
+      
+--- @param size string "small" or "big"
+--- function Library:Spacer(size)
+      :Spacer("small")
+      
+--- @param text string The text content
+--- @param alignment string "left", "center", or "right"
+--- function Library:Text(text, alignment)      
+      :Text("Beli Blue Gem Lock dengan harga spesial hari ini saja!")
+      
+--- @param data table {Name: string, Text: string, UseIcon: boolean, Scaling: string, Frame: number, Icon: number, Amount: number, EndList: boolean}
+--- function Library:Button(data)
+      :Button({
+          Name = "buy_dl", 
+          Icon = 1796,
+          UseIcon = true, 
+          Text = "Beli Sekarang", 
+          Scaling = "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiii",
+          Amount = 1,
+      })
+      
+--- @param data table {Name: string, Text: string, UseIcon: boolean, Scaling: string, Frame: number, Icon: number, Amount: number, EndList: boolean}      
+--- function Library:Button(data)
+      :Button({
+          Name = "buy_bgl",
+          Text = "Beli Sekarang",
+          UseIcon = true,
+          Icon = 7188,
+          Scaling = "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiii",
+          EndList = true
+      })
+      
+--- @param size string "small" or "big"
+--- function Library:Spacer(size)
+      :Spacer("small")
+      
+--- @param text string The text content
+--- function Library:SmallText(text)      
+      :SmallText("`4*Penyalahgunaan sistem dapat terkena ban.")
+
+--- @param cancelText string Text for the left button (optional)
+--- @param confirmText string Text for the right button (default: "OK")
+--- @param quickExit boolean If true, adds a close 'X' button at the bottom
+--- function Library:Build(cancelText, confirmText, quickExit)
+myMenu:Build("Close", "Proceed") 
