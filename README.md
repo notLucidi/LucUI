@@ -17,6 +17,14 @@ Fungsi konstruktor untuk menginisialisasi dialog baru.
     * `BorderColor` (string/table): Warna tepi dialog (nama preset atau `{R,G,B,A}`).
     * `BG` (string/table): Warna latar belakang (nama preset atau `{R,G,B,A}`).
     * `UseEleIcon` (boolean): Menggunakan `add_label_with_ele_icon` jika bernilai true.
+  ```lua
+local menu = UI:New({
+    Name = "my_dialog",
+    Title = "Admin Panel",
+    Icon = 242,
+    DefaultColor = "`w"
+})
+  ```
 
 ### 2. Checkbox(id, text, state)
 Menambahkan elemen pilihan biner (centang).
