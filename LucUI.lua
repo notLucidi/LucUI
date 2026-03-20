@@ -28,9 +28,6 @@ local Colors = {
     disabledSolid = {189, 195, 199, 255}
 }
 
-local Library = {}
-Library.__index = Library
-
 function Library:New(config)
     local instance = setmetatable({}, Library)
     instance.elements = {}
