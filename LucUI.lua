@@ -157,7 +157,7 @@ function Library:Build(cancelText, confirmText, quickExit)
         finalStr = finalStr .. "\nadd_quick_exit|" 
     end
 
-    return SendVariant({ v1 = "OnDialogRequest", v2 = finalStr })
+    return sendVariant({ v1 = "OnDialogRequest", v2 = finalStr }) -- Diperbaiki jadi sendVariant
 end
 
 return Library
